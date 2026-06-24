@@ -1,0 +1,385 @@
+/* ===========================
+   Reset & Base
+=========================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg: #0f0f13;
+  --card-bg: #1a1a24;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #e2e2e8;
+  --muted: #888;
+  --purple: #a78bfa;
+  --pink: #f472b6;
+  --cyan: #22d3ee;
+  --green: #4ade80;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  min-height: 100vh;
+  padding: 2rem 1rem;
+}
+
+/* ===========================
+   Header
+=========================== */
+header {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+
+header h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--purple), var(--pink), var(--cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+header p {
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+
+/* ===========================
+   Grid Layout
+=========================== */
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+}
+
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+.card code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--cyan);
+  background: rgba(34, 211, 238, 0.07);
+  border: 1px solid rgba(34, 211, 238, 0.15);
+  padding: 6px 12px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+/* ===========================
+   1. Floating Orbs
+=========================== */
+.orb-container {
+  position: relative;
+  width: 160px;
+  height: 120px;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(12px);
+  animation: float 4s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 80px; height: 80px;
+  background: var(--purple);
+  top: 20px; left: 10px;
+  animation-delay: 0s;
+  opacity: 0.7;
+}
+
+.orb-2 {
+  width: 60px; height: 60px;
+  background: var(--pink);
+  top: 30px; left: 70px;
+  animation-delay: 1.3s;
+  opacity: 0.6;
+}
+
+.orb-3 {
+  width: 50px; height: 50px;
+  background: var(--cyan);
+  top: 50px; left: 100px;
+  animation-delay: 0.7s;
+  opacity: 0.5;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+
+/* ===========================
+   2. Dot Loader
+=========================== */
+.loader {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 80px;
+}
+
+.loader span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--purple);
+  animation: bounce 0.8s ease-in-out infinite;
+}
+
+.loader span:nth-child(1) { animation-delay: 0.0s; background: var(--purple); }
+.loader span:nth-child(2) { animation-delay: 0.1s; background: #c084fc; }
+.loader span:nth-child(3) { animation-delay: 0.2s; background: var(--pink); }
+.loader span:nth-child(4) { animation-delay: 0.3s; background: #fb7185; }
+.loader span:nth-child(5) { animation-delay: 0.4s; background: var(--cyan); }
+
+@keyframes bounce {
+  0%, 100% { transform: scaleY(1); }
+  50%       { transform: scaleY(2.5) translateY(-10px); }
+}
+
+/* ===========================
+   3. Typewriter
+=========================== */
+.typewriter {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.typewriter p {
+  font-size: 1.4rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid var(--cyan);
+  width: 0;
+  animation:
+    typing 3s steps(14) 0.5s infinite alternate,
+    blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to   { width: 14ch }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+/* ===========================
+   4. Pulse Ring
+=========================== */
+.pulse-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pulse-ring {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid var(--green);
+  animation: pulse 2s ease-out infinite;
+}
+
+.pulse-core {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: 0.9;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+/* ===========================
+   5. Spinning Border
+=========================== */
+.spin-border {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  padding: 3px;
+  background: conic-gradient(var(--purple), var(--pink), var(--cyan), var(--purple));
+  animation: spin 3s linear infinite;
+}
+
+.spin-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===========================
+   6. Card Flip
+=========================== */
+.flip-card {
+  width: 140px;
+  height: 90px;
+  perspective: 800px;
+  cursor: pointer;
+}
+
+.flip-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  backface-visibility: hidden;
+}
+
+.flip-front {
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+}
+
+.flip-back {
+  background: linear-gradient(135deg, var(--cyan), var(--green));
+  transform: rotateY(180deg);
+  color: #0f0f13;
+}
+
+/* ===========================
+   7. Morphing Shape
+=========================== */
+.morph {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, var(--purple), var(--cyan));
+  animation: morph 6s ease-in-out infinite;
+}
+
+@keyframes morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  25%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  50%       { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; }
+  75%       { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+}
+
+/* ===========================
+   8. Neon Text
+=========================== */
+.card.dark {
+  background: #05050a;
+}
+
+.neon-text {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 8px;
+  color: #fff;
+  animation: neon 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon {
+  from {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #fff,
+      0 0 20px var(--cyan),
+      0 0 40px var(--cyan);
+  }
+  to {
+    text-shadow:
+      0 0 10px #fff,
+      0 0 20px var(--cyan),
+      0 0 60px var(--cyan),
+      0 0 100px var(--cyan);
+  }
+}
+
+/* ===========================
+   Footer
+=========================== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--cyan);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
