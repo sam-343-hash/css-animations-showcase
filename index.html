@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Animations Showcase</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>CSS <span class="gradient-text">Animations</span> Showcase</h1>
+    <p>Looks complex. It's just CSS.</p>
+  </header>
+
+  <main>
+
+    <!-- 1. Glowing Orbs -->
+    <section class="card">
+      <h2>Floating Orbs</h2>
+      <div class="orb-container">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+      </div>
+      <code>animation: float 4s ease-in-out infinite;</code>
+    </section>
+
+    <!-- 2. Loader -->
+    <section class="card">
+      <h2>Dot Loader</h2>
+      <div class="loader">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <code>animation-delay: calc(var(--i) * 0.1s);</code>
+    </section>
+
+    <!-- 3. Typewriter -->
+    <section class="card">
+      <h2>Typewriter Effect</h2>
+      <div class="typewriter">
+        <p>Hello, World! 👋</p>
+      </div>
+      <code>animation: typing 3s steps(14) infinite;</code>
+    </section>
+
+    <!-- 4. Pulse Ring -->
+    <section class="card">
+      <h2>Pulse Ring</h2>
+      <div class="pulse-wrapper">
+        <div class="pulse-ring"></div>
+        <div class="pulse-core"></div>
+      </div>
+      <code>animation: pulse 2s ease-out infinite;</code>
+    </section>
+
+    <!-- 5. Rotating Border -->
+    <section class="card">
+      <h2>Spinning Border</h2>
+      <div class="spin-border">
+        <div class="spin-inner">CSS</div>
+      </div>
+      <code>animation: spin 3s linear infinite;</code>
+    </section>
+
+    <!-- 6. Card Flip -->
+    <section class="card">
+      <h2>Card Flip (Hover Me)</h2>
+      <div class="flip-card">
+        <div class="flip-inner">
+          <div class="flip-front">Front ✨</div>
+          <div class="flip-back">Back 🎉</div>
+        </div>
+      </div>
+      <code>transform: rotateY(180deg);</code>
+    </section>
+
+    <!-- 7. Morphing Shape -->
+    <section class="card">
+      <h2>Morphing Shape</h2>
+      <div class="morph"></div>
+      <code>animation: morph 6s ease-in-out infinite;</code>
+    </section>
+
+    <!-- 8. Neon Text -->
+    <section class="card dark">
+      <h2>Neon Glow</h2>
+      <div class="neon-text">NEON</div>
+      <code>animation: neon 1.5s ease-in-out infinite alternate;</code>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Built with pure HTML &amp; CSS · <a href="https://github.com" target="_blank">GitHub</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
